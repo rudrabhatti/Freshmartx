@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel - FreshMartX</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<script>
+  // Simple auth check
+  if (localStorage.getItem('loggedIn') !== 'true') {
+    window.location.href = 'login.html';
+  }
+</script>
+
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- ======= Admin Header ======= -->
+  <header class="bg-green-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold">FreshMartX Admin Panel</h1>
+<button onclick="logout()" class="bg-white text-green-600 px-4 py-2 rounded-full hover:bg-green-100 transition">Logout</button>
+
+<script>
+  function logout() {
+    localStorage.removeItem('loggedIn');
+    window.location.href = 'login.html';
+  }
+</script>
+
+  </header>
+
+  <!-- ======= Admin Panel Layout ======= -->
+  <div class="flex">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md h-screen p-6">
+      <nav class="space-y-4">
+        <a href="#" class="block text-green-600 font-semibold">Dashboard</a>
+        <a href="#" class="block text-gray-700 hover:text-green-500">Add Product</a>
+        <a href="#" class="block text-gray-700 hover:text-green-500">Manage Products</a>
+        <a href="#" class="block text-gray-700 hover:text-green-500">Orders</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8">
+      <h2 class="text-2xl font-bold mb-6">Add New Product</h2>
+      <form id="add-product-form" class="bg-white p-6 rounded-lg shadow-md space-y-4">
+        <div>
+          <label class="block mb-2 font-semibold">Product Name</label>
+          <input type="text" id="product-name" class="w-full border rounded-md p-3" placeholder="e.g. Fresh Apples" required>
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold">Category</label>
+          <select id="product-category" class="w-full border rounded-md p-3" required>
+            <option value="">Select Category</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Organic">Organic</option>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold">Price</label>
+          <input type="number" id="product-price" class="w-full border rounded-md p-3" placeholder="e.g. 2.99" required>
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold">Image URL</label>
+          <input type="url" id="product-image" class="w-full border rounded-md p-3" placeholder="https://example.com/apple.jpg" required>
+        </div>
+        <div>
+          <label class="block mb-2 font-semibold">Description</label>
+          <textarea id="product-description" class="w-full border rounded-md p-3" placeholder="Short description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-700 transition">
+          Add Product
+        </button>
+      </form>
+
+      <!-- Toast Container -->
+      <div id="toast-container" class="fixed top-5 right-5 space-y-4 z-50"></div>
+    </main>
+  </div>
+
+  <!-- ======= Fancy Toast Script ======= -->
+  <script>
+    const form = document.getElementById('add-product-form');
+    const toastContainer = document.getElementById('toast-container');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Your backend integration goes here!
+
+      const toast = document.createElement('div');
+      toast.className = 'bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-2';
+      toast.innerHTML = `
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+        </svg>
+        <span>Product added successfully!</span>
+      `;
+      toastContainer.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0');
+        setTimeout(() => toast.remove(), 500);
+      }, 3000);
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>

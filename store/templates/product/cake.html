@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+      </nav>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Cake.png' %}" alt="Cake" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Cake</h2>
+        <p class="text-lg text-gray-600 mb-4">
+       “Cake is a soft, spongy dessert made with flour, sugar, and butter, often layered with cream or icing. Perfect for celebrations, birthdays, or sweet cravings.”
+      </p>
+        <p class="text-2xl font-semibold text-green-600 mb-4">₹120 / kg</p>
+        <button onclick="addToCart('Cake')" class="bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+<!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+       <!-- croissant -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'croissant' %}">
+            <img src="{% static 'images/croissant.png' %}" alt="croissant" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">croissant</h3>
+            <p class="text-gray-500 mb-2">"Flaky, buttery, and light. A classic French treat perfect for breakfast or snacks."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+      
+              <!-- Muffin -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Muffin' %}">
+            <img src="{% static 'images/Muffin.png' %}" alt="Muffin" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Muffin</h3>
+            <p class="text-gray-500 mb-2">"Moist, fluffy, and delicious. Ideal for a sweet bite any time of day."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+
+    <!-- Bun -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Bun' %}">
+        <img src="{% static 'images/Bun.png' %}" alt="Bun" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Bun</h3>
+        <p class="text-gray-500 mb-2">"Soft and fluffy. Great for burgers, snacks, or tea-time treats."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹140/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+        
+      </div>
+</div>
+
+    <!-- Pastry -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Pastry' %}">
+        <img src="{% static 'images/Pastry.png' %}" alt="Pastry" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Pastry</h3>
+        <p class="text-gray-500 mb-2">"Crispy, creamy, and delightful. A sweet or savory indulgence for any occasion."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹140/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+        
+      </div>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+
+</body>
+</html>

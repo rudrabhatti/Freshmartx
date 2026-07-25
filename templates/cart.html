@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Cart - FreshMartX</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-green-600">
+        <a href="{% url 'index' %}">FreshMartX</a>
+      </h1>
+      <a href="{% url 'index' %}" class="text-green-500 hover:underline">Continue Shopping</a>
+    </div>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="container mx-auto py-12 px-4">
+    <h2 class="text-3xl font-bold mb-8">Your Shopping Cart</h2>
+
+    {% if cart_items %}
+      <div class="space-y-6">
+        {% for item in cart_items %}
+          <div class="bg-white p-4 rounded-lg shadow flex items-center justify-between">
+            <!-- Product Image & Details -->
+            <div class="flex items-center gap-4">
+              <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-20 h-20 object-cover rounded-lg">
+              <div>
+                <h3 class="text-lg font-semibold">{{ item.product.name }}</h3>
+                <p class="text-gray-600">Price: ₹{{ item.product.price }}</p>
+                <p class="text-sm text-gray-500">Subtotal: ₹{{ item.total_price }}</p>
+              </div>
+            </div>
+
+            <!-- Quantity & Remove -->
+            <div class="flex items-center gap-4">
+              <form method="post" action="{% url 'update_cart_item' item.id %}">
+                {% csrf_token %}
+                <input type="number" name="quantity" value="{{ item.quantity }}" min="1"
+                       class="w-16 border rounded-lg px-2 py-1 text-center"
+                       onchange="this.form.submit()">
+              </form>
+              <a href="{% url 'remove_from_cart' item.id %}" class="text-red-600 hover:underline">Remove</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Total Price Section -->
+      <div class="bg-white p-6 mt-8 rounded-lg shadow flex justify-between items-center">
+        <span class="text-xl font-semibold">Total:</span>
+        <span class="text-2xl font-bold text-green-600">₹{{ total }}</span>
+      </div>
+
+      <!-- Checkout Button -->
+      <div class="mt-6 text-right">
+        <a href="{% url 'checkout' %}" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+          Proceed to Checkout
+        </a>
+      </div>
+
+    {% else %}
+      <p class="text-gray-500">Your cart is empty.</p>
+    {% endif %}
+  </section>
+
+</body>
+</html>

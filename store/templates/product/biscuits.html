@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+      </nav>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Biscuit.png' %}" alt="Biscuits" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Biscuits</h2>
+        <p class="text-lg text-gray-600 mb-4">
+        “Biscuits are crispy, baked treats made from flour, sugar, and Chocolate, often enjoyed as a snack or with tea and coffee. Available in sweet, salty, or cream-filled varieties, they are loved by all age groups. Perfect for quick snacking, lunch boxes, or evening tea-time.”
+      </p>
+        <p class="text-2xl font-semibold text-green-600 mb-4">₹120 / kg</p>
+        <button onclick="addToCart('Biscuits')" class="bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Chips -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Chips' %}">
+            <img src="{% static 'images/cheese.png' %}" alt="Chips" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Chips</h3>
+            <p class="text-gray-500 mb-2">"Crunchy, salty, and full of flavor. The perfect snack for any time of day."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+      
+      <!-- Chocolate -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Chocolate' %}">
+            <img src="{% static 'images/Chocolate.png' %}" alt="Chocolate" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Chocolate</h3>
+            <p class="text-gray-500 mb-2">"Rich, smooth, and irresistibly sweet. Perfect for snacking, baking, or gifting."</p>
+            </p>
+          </a>
+         <div class="flex items-center justify-between mt-2">
+           <span class="text-green-600 font-bold">₹50/kg</span>
+           <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+
+    <!-- Cola -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Cola' %}">
+        <img src="{% static 'images/Cola.png' %}" alt="Cola" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Cola</h3>
+        <p class="text-gray-500 mb-2">"Bold, fizzy, and refreshingly sweet. A classic beverage to enjoy anytime, anywhere."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹90/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+      </div>
+    </div>
+    
+    <!-- Juice -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Juice' %}">
+        <img src="{% static 'images/Juice.png' %}" alt="Juice" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Juice</h3>
+        <p class="text-gray-500 mb-2">"Refreshing, fruity, and packed with natural goodness. Perfect for a healthy boost anytime."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹140/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+        
+      </div>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+
+</body>
+</html>

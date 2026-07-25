@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - FreshMartX</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    function updateTotal() {
+      let total = 0;
+      document.querySelectorAll('.cart-item').forEach(item => {
+        const price = parseFloat(item.dataset.price);
+        const qty = parseInt(item.querySelector('input').value);
+        total += price * qty;
+      });
+      document.getElementById('total-price').textContent = `₹${total.toFixed(2)}`;
+    }
+
+    function changeQty(input) {
+      if (parseInt(input.value) < 1) input.value = 1;
+      updateTotal();
+    }
+
+    document.addEventListener("DOMContentLoaded", updateTotal);
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md py-4 px-6 flex items-center justify-between">
+    <h1 class="text-2xl font-bold text-green-600">
+      <a href="{% url 'index' %}">🛒 FreshMartX</a>
+    </h1>
+    <a href="{% url 'index' %}" class="text-green-500 hover:underline">Continue Shopping</a>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="max-w-5xl mx-auto p-4 mt-8">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">Your Cart</h2>
+
+    <!-- Cart Items -->
+    <div class="space-y-6">
+      {% for item in cart_items %}
+        <div class="cart-item bg-white p-4 rounded-lg shadow flex items-center gap-4" data-price="{{ item.product.price }}">
+          <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-24 h-24 object-cover rounded-lg">
+          <div class="flex-1">
+            <h3 class="text-lg font-semibold">{{ item.product.name|title }}</h3>
+            <p class="text-sm text-gray-500">₹{{ item.product.price }}</p>
+          </div>
+          <input type="number" value="{{ item.quantity }}" min="1" class="w-16 p-1 border rounded" onchange="changeQty(this)">
+          <a href="{% url 'remove_from_cart' item.id %}" class="ml-4 text-red-500 hover:text-red-700 transition">Remove</a>
+        </div>
+      {% empty %}
+        <p>Your cart is empty.</p>
+      {% endfor %}
+    </div>
+
+    <!-- Total -->
+    <div class="text-right mt-6">
+      <h3 class="text-xl font-bold">Total: <span id="total-price" class="text-green-600">₹{{ total }}</span></h3>
+      <a href="{% url 'checkout' %}">
+        <button class="mt-4 bg-green-600 hover:bg-green-700 transition text-white px-6 py-2 rounded-lg shadow">
+          Proceed to Checkout
+        </button>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 fade-in mt-12">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">About FreshMartX</h3>
+        <p class="text-gray-400">FreshMartX is your futuristic grocery store delivering fresh products at the best prices.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+        <ul>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">support@freshmartx.com</a></li>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">+1 234 567 890</a></li>
+          <li><a href="#" class="hover:text-green-400 transition">123 Fresh St, Future City</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Quick Links</h3>
+        <ul>
+          <li class="mb-2"><a href="{% url 'index' %}" class="hover:text-green-400 transition">Home</a></li>
+          <li class="mb-2"><a href="{% url 'categories' %}" class="hover:text-green-400 transition">Categories</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8 text-sm">&copy; 2025 FreshMartX. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

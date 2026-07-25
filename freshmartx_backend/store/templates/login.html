@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login - FreshMartX</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+
+  <!-- Login Card -->
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-6 text-green-600 text-center">Admin Login</h1>
+    <form id="login-form" class="space-y-4">
+      <div>
+        <label class="block font-semibold mb-1">Username</label>
+        <input type="text" id="username" class="w-full border rounded-md p-3" placeholder="admin" required>
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Password</label>
+        <input type="password" id="password" class="w-full border rounded-md p-3" placeholder="password" required>
+      </div>
+      <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-full font-semibold hover:bg-green-700 transition">Login</button>
+    </form>
+    <p id="error-message" class="text-red-500 mt-4 hidden">Invalid credentials. Please try again.</p>
+  </div>
+
+  <!-- Back Button (outside card) -->
+  <div class="mt-6">
+    <a href="index.html" class="inline-block px-5 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">
+      ← Back to Home
+    </a>
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const error = document.getElementById('error-message');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (username === 'admin' && password === 'password') {
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'admin.html';
+      } else {
+        error.classList.remove('hidden');
+      }
+    });
+
+    // Redirect if already logged in
+    if (localStorage.getItem('loggedIn') === 'true') {
+      window.location.href = 'admin.html';
+    }
+  </script>
+  
+</body>
+</html>

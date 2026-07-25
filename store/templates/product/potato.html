@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+ </nav>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Potato.png' %}" alt="Potato" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Potato</h2>
+        <p class="text-lg text-gray-600 mb-4">
+       “Potatoes are versatile, energy-rich vegetables packed with carbohydrates, fiber, and Vitamin C. They can be boiled, fried, roasted, or mashed, making them perfect for curries, snacks, and side dishes. A kitchen essential, potatoes are loved for their taste and adaptability in countless recipes.”
+       <p class="text-2xl font-semibold text-green-600 mb-4">₹120 / kg</p>
+        <button onclick="addToCart('Potato')" class="bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Tomato -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Tomato' %}">
+            <img src="{% static 'images/Tomato.png' %}" alt="Tomato" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Tomato</h3>
+            <p class="text-gray-500 mb-2">"Juicy, tangy, and full of flavor. Essential for salads, sauces, and everyday cooking."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+      
+        <!-- brinjal -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'brinjal' %}">
+            <img src="{% static 'images/brinjal.png' %}" alt="brinjal" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">brinjal</h3>
+            <p class="text-gray-500 mb-2">"Soft, versatile, and rich in flavor. Ideal for curries, fries, and roasted dishes."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+
+    <!-- onion -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'onion' %}">
+        <img src="{% static 'images/onion.png' %}" alt="onion" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">onion</h3>
+        <p class="text-gray-500 mb-2">"Pungent, flavorful, and a kitchen essential. Adds depth to curries, salads, and stir-fries."</p>
+
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹90/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+      </div>
+    </div>
+    
+    <!-- beetroot -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'beetroot' %}">
+        <img src="{% static 'images/bitroot.png' %}" alt="beetroot" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">beetroot</h3>
+        <p class="text-gray-500 mb-2">"Earthy, vibrant, and nutrient-packed. Great for salads, juices, and healthy meals."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹140/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+        
+      </div>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+
+</body>
+</html>

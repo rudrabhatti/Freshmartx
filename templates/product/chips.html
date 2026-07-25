@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+      </nav>
+  </header>
+{% if messages %}
+  <div id="flash-message" class="bg-green-100 border border-green-300 text-green-700 px-4 py-3 rounded mt-4 mx-6">
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Chips.png' %}" alt="Chips" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Chips</h2>
+        <p class="text-lg text-gray-600 mb-4">
+        “Chips are thinly sliced, fried or baked potato snacks that are crispy, salty, and flavorful. A popular munching option, they come in a variety of flavors like classic salted, masala, cheese, and tangy tomato. Perfect for parties, picnics, or as a quick snack with beverages.”
+        </p>
+        <p class="text-2xl font-semibold text-green-600 mb-4">₹20/ 48g</p>
+         <a href="{% url 'add_to_cart' '34' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add to Cart
+        </a></div>
+
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Biscuit -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Biscuits' %}">
+            <img src="{% static 'images/Biscuit.png' %}" alt="Biscuit" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Biscuit</h3>
+            <p class="text-gray-500 mb-2">“Delicious, crunchy biscuits – a classic treat for every break.”</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹50/300g</span>
+            <a href="{% url 'add_to_cart' '35' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+        </div>
+      <!-- Chocolate -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Chocolate' %}">
+            <img src="{% static 'images/Chocolate.png' %}" alt="Chocolate" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Chocolate</h3>
+            <p class="text-gray-500 mb-2">"Rich, smooth, and irresistibly sweet. Perfect for snacking, baking, or gifting."</p>
+            </p>
+          </a>
+         <div class="flex items-center justify-between mt-2">
+           <span class="text-green-600 font-bold">₹180/150g</span>
+           <a href="{% url 'add_to_cart' '36' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+        </div>
+
+    <!-- Cola -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Cola' %}">
+        <img src="{% static 'images/Cola.png' %}" alt="Cola" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Cola</h3>
+        <p class="text-gray-500 mb-2">"Bold, fizzy, and refreshingly sweet. A classic beverage to enjoy anytime, anywhere."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹50/750ML</span>
+        <a href="{% url 'add_to_cart' '37' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+    </div>
+    
+    <!-- Juice -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Juice' %}">
+        <img src="{% static 'images/Juice.png' %}" alt="Juice" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Juice</h3>
+        <p class="text-gray-500 mb-2">"Refreshing, fruity, and packed with natural goodness. Perfect for a healthy boost anytime."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹120/400ML</span>
+        <a href="{% url 'add_to_cart' '38' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a>
+      </div>
+    </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+<script>
+  setTimeout(function () {
+    const messageBox = document.getElementById('flash-message');
+    if (messageBox) {
+      messageBox.style.display = 'none';
+    }
+  }, 2000); // 2000ms = 2 seconds
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

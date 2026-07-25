@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+ </nav>
+  </header>
+{% if messages %}
+  <div id="flash-message" class="bg-green-100 border border-green-300 text-green-700 px-4 py-3 rounded mt-4 mx-6">
+    {% for message in messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+  </div>
+{% endif %}
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Toordal.png' %}" alt="Toor-dal" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Toor-dal</h2>
+        <p class="text-lg text-gray-600 mb-4">
+        “Toor Dal, also called Arhar Dal, is a protein-rich lentil with a mild, nutty flavor. It is a staple in Indian households, used for preparing dals, sambhar, and curries. Packed with protein, fiber, folate, and essential nutrients, it supports digestion, boosts energy, and makes a wholesome everyday meal.”
+        <p class="text-2xl font-semibold text-green-600 mb-4">₹150 / kg</p>
+        <a href="{% url 'add_to_cart' '1' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add to cart 
+        </a></div>
+
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Moong-dal -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'moong-dal' %}">
+            <img src="{% static 'images/moongdal.png' %}" alt="Moong-dal" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Moong-dal</h3>
+            <p class="text-gray-500 mb-2">"Light, nutritious, and easy to digest. Perfect for soups, khichdi, and everyday meals."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹150/kg</span>
+            <a href="{% url 'add_to_cart' '2' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+        </div>
+      
+        <!-- Chana-dal -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Chana-dal' %}">
+            <img src="{% static 'images/Chanadal.png' %}" alt="Chana-dal" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Chana-dal</h3>
+            <p class="text-gray-500 mb-2">"Nutty, protein-rich, and easy to cook. Ideal for dals, curries, and healthy dishes."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹150/kg</span>
+            <a href="{% url 'add_to_cart' '3' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+        </div>
+
+        <!-- Sugar -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Sugar' %}">
+            <img src="{% static 'images/Sugar.png' %}" alt="Sugar" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Sugar</h3>
+            <p class="text-gray-500 mb-2">"Pure, sweet, and essential for baking, beverages, and everyday sweetness."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹90/kg</span>
+           <a href="{% url 'add_to_cart' '8' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a> </div>
+        </div>
+    
+        <!-- rice -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'rice' %}">
+            <img src="{% static 'images/Rice.png' %}" alt="Rice" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Rice</h3>
+            <p class="text-gray-500 mb-2">"Light, fluffy, and a staple in every meal. Perfect for curries, stir-fries, and biryanis."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹180/kg</span>
+            <a href="{% url 'add_to_cart' '5' %}" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+          Add 
+        </a></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+<script>
+  setTimeout(function () {
+    const messageBox = document.getElementById('flash-message');
+    if (messageBox) {
+      messageBox.style.display = 'none';
+    }
+  }, 2000); // 2000ms = 2 seconds
+</script>
+</body>
+</html>

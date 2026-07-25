@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshMartX | Product Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+    <nav>
+      <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-600 transition">Home</a>
+      <a href="{% url 'categories' %}" class="ml-6 text-gray-700 hover:text-green-600 transition">Categories</a>
+      </nav>
+  </header>
+
+  <!-- Product Detail Section -->
+  <section class="py-12">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- 🖼️ Product Image -->
+      <div class="flex justify-center">
+        <img src="{% static 'images/Cheese.png' %}" alt="Cheese" class="w-[500px] h-[500px] rounded-2xl shadow-xl border border-gray-200 object-contain">
+      </div>
+
+      <div>
+        <h2 class="text-4xl font-bold mb-4">Cheese</h2>
+        <p class="text-lg text-gray-600 mb-4">
+         “Cheese is a delicious dairy product made from milk, rich in protein, calcium, and healthy fats. It supports bone health, provides energy, and adds a creamy texture to dishes. Perfect for sandwiches, pizzas, pastas, or enjoyed as a snack.”
+        </p>
+        <p class="text-2xl font-semibold text-green-600 mb-4">₹120 / kg</p>
+        <button onclick="addToCart('Cheese')" class="bg-green-600 text-white px-6 py-3 rounded-full text-lg hover:bg-green-700 transition">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Related Products Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto max-w-7xl px-4">
+      <h2 class="text-3xl font-bold text-center mb-10">Related Products</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- Milk -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Milk' %}">
+            <img src="{% static 'images/Milk.png' %}" alt="Milk" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Milk</h3>
+            <p class="text-gray-500 mb-2"> "Pure, nutritious, and calcium-rich. Essential for drinking, cooking, and baking."</p>
+          </a>
+          <div class="flex items-center justify-between mt-2">
+            <span class="text-green-600 font-bold">₹1250/kg</span>
+            <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+      
+      <!-- Butter -->
+        <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+          <a href="{% url 'product_detail' 'Butter' %}">
+            <img src="{% static 'images/Butter.png' %}" alt="Butter" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Butter</h3>
+            <p class="text-gray-500 mb-2"> "Smooth, creamy, and deliciously rich. Ideal for cooking, baking, or spreading." </p>
+            </p>
+          </a>
+         <div class="flex items-center justify-between mt-2">
+           <span class="text-green-600 font-bold">₹50/kg</span>
+           <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+          </div>
+        </div>
+
+    <!-- Paneer -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Paneer' %}">
+        <img src="{% static 'images/Paneer.png' %}" alt="Paneer" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Paneer</h3>
+        <p class="text-gray-500 mb-2">"Soft, fresh, and protein-rich. Perfect for curries, snacks, and grilled dishes." </p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹90/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+      </div>
+    </div>
+    
+    <!-- Curd -->
+    <div class="bg-white border rounded-2xl shadow-md p-4 hover:shadow-lg transition-all duration-300">
+      <a href="{% url 'product_detail' 'Curd' %}">
+        <img src="{% static 'images/Curd.png' %}" alt="Curd" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+        <h3 class="text-xl font-semibold mb-2">Curd</h3>
+        <p class="text-gray-500 mb-2"> "Thick, creamy, and naturally refreshing. Great for digestion and everyday meals."</p>
+      </a>
+      <div class="flex items-center justify-between mt-2">
+        <span class="text-green-600 font-bold">₹140/kg</span>
+        <button class="bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition">Add</button>
+        
+      </div>
+</div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-50 mt-10 py-6 text-center text-gray-600 text-sm">
+    © 2025 FreshMartX. All rights reserved.
+  </footer>
+
+</body>
+</html>

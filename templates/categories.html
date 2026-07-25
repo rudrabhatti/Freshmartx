@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categories - FreshMartX</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <h1 class="text-2xl font-bold text-green-600">
+        <a href="{% url 'index' %}">FreshMartX</a>
+      </h1>
+      <nav class="space-x-6">
+        <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-500 transition">Home</a>
+        <a href="{% url 'categories' %}" class="text-gray-700 hover:text-green-500 transition">Categories</a>
+        <a href="{% url 'about_us' %}" class="text-gray-700 hover:text-green-500 transition">About Us</a>
+        <a href="{% url 'cart' %}" class="text-gray-700 hover:text-green-500 transition">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Back Button -->
+  <div class="container mx-auto px-4 py-4">
+    <a href="{% url 'index' %}" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">
+      ← Back to Home
+    </a>
+  </div>
+
+
+
+  <!-- Categories Hero -->
+  <section class="text-center py-12">
+    <h2 class="text-4xl font-bold mb-4">Shop by Categories</h2>
+    <p class="text-lg text-gray-600">Explore our fresh selection by category.</p>
+  </section>
+  
+
+  <!-- Categories Grid -->
+  <section class="py-8 fade-in">
+    <div class="container mx-auto max-w-6xl px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+      <a href="{% url 'grocery' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/grocery.png' %}" alt="Grocery" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold mb-2">Grocery</h3>
+      </a>
+
+      <a href="{% url 'vegetables' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/vegetables.png' %}" alt="Vegetables" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold">Vegetables</h3>
+      </a>
+
+      <a href="{% url 'fruits' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/fruit.png' %}" alt="Fruits" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold">Fruits</h3>
+      </a>
+
+      <a href="{% url 'dairy' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/dairy.png' %}" alt="Dairy Products" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold">Dairy Products</h3>
+      </a>
+
+      <a href="{% url 'snacks_beverages' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/snack.png' %}" alt="Snacks & Beverages" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold">Snacks & Beverages</h3>
+      </a>
+
+      <a href="{% url 'bakery' %}" class="block bg-white rounded-xl shadow-lg p-6 text-center transform transition hover:scale-105 hover:shadow-2xl">
+        <img src="{% static 'images/bakery.png' %}" alt="Bakery Items" class="w-20 h-20 mx-auto mb-4">
+        <h3 class="text-xl font-semibold">Bakery Items</h3>
+      </a>
+    </div>
+
+   
+  </section>
+
+   <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 py-12 fade-in">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">About FreshMartX</h3>
+        <p class="text-gray-400">FreshMartX is your go-to futuristic grocery store delivering fresh produce at the best prices.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+        <ul>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">freshmartx@gmail.com</a></li>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">6356 419 637  or 7265 928 668</a></li>
+          <li><a href="#" class="hover:text-green-400 transition">Rajkot, Gujrat</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="text-center text-gray-500 mt-8 text-sm">&copy; 2025 FreshMartX. All rights reserved.</div>
+  </footer>
+
+  <!-- Scroll Fade-in Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOptions = { threshold: 0.1 };
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        });
+      }, appearOptions);
+      faders.forEach(fader => appearOnScroll.observe(fader));
+    });
+  </script>
+
+</body>
+</html>

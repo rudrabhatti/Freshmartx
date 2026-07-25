@@ -1,0 +1,164 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Snacks & Beverages | FreshMartX</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto flex items-center justify-between py-4 px-6">
+      <h1 class="text-2xl font-bold text-green-600">FreshMartX</h1>
+      <nav class="space-x-6">
+        <a href="{% url 'index' %}" class="text-gray-700 hover:text-green-500 transition">Home</a>
+        <a href="{% url 'categories' %}" class="text-gray-700 hover:text-green-500 transition">Categories</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Video -->
+  <section class="relative h-[40vh] flex items-center justify-center overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="{% static 'videos/snacks.mp4' %}" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-br from-green-300/40 via-green-100/20 to-white/10"></div>
+    <div class="relative z-10 bg-white/20 backdrop-blur-md rounded-xl p-8 text-center text-gray-900 max-w-xl mx-auto shadow-2xl">
+      <h2 class="text-4xl md:text-5xl font-bold mb-2">Snacks & Beverages</h2>
+      <p class="text-lg">Best snacks & beverages for your needs.</p>
+    </div>
+  </section>
+
+  <!-- Back Button -->
+  <div class="container mx-auto px-4 py-4">
+    <a href="{% url 'categories' %}" class="inline-block px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition">
+      ← Back to Categories
+    </a>
+  </div>
+
+  <!-- Products Grid -->
+  <section class="py-16 bg-green-100 fade-in">
+    <div class="container mx-auto max-w-7xl px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        <!-- Chips -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'chips' %}">
+            <img src="{% static 'images/chips.png' %}" alt="Chips" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Chips</h3>
+            <p class="text-gray-700 mb-4">Crispy potato chips with mouthwatering flavors.</p>
+          </a>
+          <button onclick="addToCart('Chips')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+        <!-- Biscuits -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'biscuits' %}">
+            <img src="{% static 'images/biscuit.png' %}" alt="Biscuits" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Biscuits</h3>
+            <p class="text-gray-700 mb-4">Crunchy biscuits for tea-time snacks.</p>
+          </a>
+          <button onclick="addToCart('Biscuits')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+        <!-- chocolate -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'chocolate' %}">
+            <img src="{% static 'images/chocolate.png' %}" alt="chocolate" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">chocolate</h3>
+            <p class="text-gray-700 mb-4">Premium tea leaves for a refreshing cup.</p>
+          </a>
+          <button onclick="addToCart('chocolate')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+        <!-- Cola -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'cola' %}">
+            <img src="{% static 'images/cola.png' %}" alt="Cola" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Cola</h3>
+            <p class="text-gray-700 mb-4">Refreshing carbonated cola drink.</p>
+          </a>
+          <button onclick="addToCart('Cola')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+        <!-- Juice -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'juice' %}">
+            <img src="{% static 'images/juice.png' %}" alt="Juice" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Juice</h3>
+            <p class="text-gray-700 mb-4">Fresh fruit juice for a healthy refreshment.</p>
+          </a>
+          <button onclick="addToCart('Juice')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+        
+        <!-- Coffee -->
+        <div class="backdrop-blur-md bg-white/30 border border-white/50 rounded-xl p-6 shadow-lg text-center">
+          <a href="{% url 'product_detail' 'coffee' %}">
+            <img src="{% static 'images/coffee.png' %}" alt="Coffee" class="rounded-lg mb-4 mx-auto w-36 h-44 object-contain">
+            <h3 class="text-xl font-semibold mb-2">Coffee</h3>
+            <p class="text-gray-700 mb-4">Rich and aromatic coffee beans for coffee lovers.</p>
+          </a>
+          <button onclick="addToCart('Coffee')" class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition">Add to Cart</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Toasts + Scripts (unchanged) -->
+  <div id="toast-container" class="fixed top-5 right-5 space-y-4 z-50"></div>
+
+  <footer class="bg-gray-900 text-gray-300 py-12 fade-in">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">About FreshMartX</h3>
+        <p class="text-gray-400">FreshMartX is your go-to futuristic grocery store delivering fresh produce at the best prices.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Contact Us</h3>
+        <ul>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">support@freshmartx.com</a></li>
+          <li class="mb-2"><a href="#" class="hover:text-green-400 transition">+1 234 567 890</a></li>
+          <li><a href="#" class="hover:text-green-400 transition">123 Fresh St, Future City</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-4 text-white">Categories</h3>
+        <ul>
+          <li class="mb-2"><a href="{% url 'fruits' %}" class="hover:text-green-400 transition">Fruits</a></li>
+          <li class="mb-2"><a href="{% url 'vegetables' %}" class="hover:text-green-400 transition">Vegetables</a></li>
+          <li class="mb-2"><a href="{% url 'snacks_beverages' %}" class="hover:text-green-400 transition">Foodgrains</a></li>
+          <li><a href="{% url 'dairy' %}" class="hover:text-green-400 transition">Dairy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 mt-8 text-sm">&copy; 2025 FreshMartX. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function addToCart(productName) {
+      const toast = document.createElement('div');
+      toast.className = 'bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg flex items-center space-x-2 animate-slideIn';
+      toast.innerHTML = `<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg><span>${productName} added to cart!</span>`;
+      document.getElementById('toast-container').appendChild(toast);
+      setTimeout(() => { toast.classList.add('opacity-0'); setTimeout(() => toast.remove(), 500); }, 3000);
+    }
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => { if (!entry.isIntersecting) return; entry.target.classList.add('visible'); observer.unobserve(entry.target); });
+      }, { threshold: 0.1 });
+      faders.forEach(fader => appearOnScroll.observe(fader));
+    });
+  </script>
+
+</body>
+</html>

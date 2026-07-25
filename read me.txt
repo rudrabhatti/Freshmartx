@@ -1,0 +1,36 @@
+✅ Steps to Test Your Project
+
+	
+
+
+Install dependencies
+If you have a requirements.txt file:
+
+	pip install -r requirements.txt
+
+
+install pillow for image
+
+		pip install pillow
+
+
+Apply migrations
+
+	python manage.py migrate
+
+
+Create a superuser (for admin panel)
+
+	python manage.py createsuperuser
+	username: admin
+	email: freshmartx@gmail.com
+	password: admin@123
+
+
+
+Run the development server
+
+	python manage.py runserver
+
+
+Then open: http://127.0.0.1:8000/

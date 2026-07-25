@@ -1,0 +1,69 @@
+-----all PRODUCTS -----
+
+Grocery=
+    toor-dal
+    moong-dal
+    chana-dal
+    kala-chana
+    rice
+    besan
+    tea
+    sugar    
+    salt
+    oil
+    badam
+    kaju
+
+vegetables=
+    tomato
+    potato
+    bitroot
+    onion
+    brinjal
+    capsicum
+
+
+Fruits=
+    apple
+    orange
+    mango
+    pineapple
+    banana
+    avocado
+    strawberry
+    grapes
+    papaya
+
+
+dairy=
+    milk
+    cheese
+    butter
+    curd
+    paneer
+    ghee
+
+snacks_beverages=
+    chips
+    biscuits
+    chocolate
+    cola
+    juice
+    coffee
+
+bakery=
+    bread
+    croissant
+    muffin
+    cake
+    bun
+    pastry
+
+
+
+
+
+
+
+
+

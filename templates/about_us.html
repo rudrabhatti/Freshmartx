@@ -108,28 +108,42 @@
     </div>
   </section>
 
-  <!-- Our Team -->
+  <!-- Our Team
   <section class="py-16 fade-in">
     <div class="container mx-auto max-w-7xl px-4 text-center">
       <h3 class="text-3xl font-bold mb-12 text-green-600">Meet Our Team</h3>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <!-- Team Member 1 -->
+      <div class="grid sm:grid-cols-1 md:grid-cols-1 gap-2">
+        
         <div class="bg-white rounded-xl p-6 shadow-lg">
-          <img src="{% static 'images/rudra.jpeg' %}" alt="Team Member" class="w-32 h-52 rounded-full mx-auto mb-4">
+          <img src="{% static 'images/rudra.png' %}" alt="Founder" class="width=12px height=12px rounded-full mx-auto mb-4">
           <h4 class="text-xl font-semibold mb-1">Rudra Bhatti</h4>
           <p class="text-green-600 mb-2">Founder & CEO</p>
           <p class="text-gray-700 text-sm">I was responsible for the backend development and technical implementation of FreshMartx, ensuring smooth functionality and performance.</p>
         </div>
-        <!-- Team Member 2 -->
-         <div class="bg-white rounded-xl p-6 shadow-lg">
-          <img src="{% static 'images/piyush.jpeg' %}" alt="Team Member" class="w-32 h-52 rounded-full mx-auto mb-4">
-          <h4 class="text-xl font-semibold mb-1">Piyush Parmar</h4>
-          <p class="text-green-600 mb-2">Operation Head</p>
-          <p class="text-gray-700 text-sm"> I focused on the design and user interface, creating a clean, user-friendly experience for all FreshMartx customers.</p>
-        </div>
+        
       </div>
     </div>
-  </section>
+  </section> -->
+
+  <section class="py-16 fade-in">
+  <div class="container mx-auto max-w-7xl px-4 text-center">
+    <h3 class="text-3xl font-bold mb-12 text-green-600">Meet Our Team</h3>
+    
+    <!-- Centered card container -->
+    <div class="max-w-md mx-auto">
+      <!-- Team Member 1 -->
+      <div class="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+        <!-- Fixed image size constraints using Tailwind classes -->
+        <img src="{% static 'images/rudra.png' %}" alt="Rudra Bhatti - Founder & CEO" class="w-40 h-40 max-w-full rounded-full mx-auto mb-4 object-cover shadow-md">
+        <h4 class="text-xl font-semibold mb-1 text-gray-900">Rudra Bhatti</h4>
+        <p class="text-green-600 font-medium mb-2">Founder & CEO</p>
+        <p class="text-gray-600 text-sm leading-relaxed">
+          I was responsible for the backend development and technical implementation of FreshMartx, ensuring smooth functionality and performance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-300 py-12 fade-in">
